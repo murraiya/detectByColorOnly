@@ -92,32 +92,17 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ################################################
 #################example i did##################
 ################################################
 
 
-# add_executable(videoLoad src/videoLoad.cpp)
-# target_link_libraries(videoLoad ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}) #(new_lib_file_name/need to link include)
+add_executable(pubtmp src/pubtmp.cpp)
+target_link_libraries(pubtmp ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}) #(new_lib_file_name/need to link include)
 
 
-# # add_executable(videoSubVisual src/videoSubVisual.cpp)
-# # target_link_libraries(videoSubVisual ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(detectBlueOrYellow src/detectBlueOrYellow.cpp)
+target_link_libraries(detectBlueOrYellow ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 # add_executable(rawORB src/rawORB.cpp)

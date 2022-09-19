@@ -21,8 +21,9 @@ int main(int argc, char** argv) {
     ros::init(argc, argv, "video_load_node");
     ros::NodeHandle nh;
 	ros::Publisher raw_image_pub = nh.advertise<sensor_msgs::Image>("/raw_image", 1);
-
-	VideoCapture cap("/media/autonav/SJ_SSD/forFeatureMatching.avi");
+	ros::Rate rate(1);
+	
+	VideoCapture cap("/media/autonav/SJ_SSD/rubberconeeee/rubbercone.avi");
 	if (!cap.isOpened())
 		{ printf("Can't open the camera"); }
 
@@ -48,10 +49,11 @@ int main(int argc, char** argv) {
 			
 			raw_image_pub.publish(ros_img_msg);
 			cout<<"published"<<endl;
-
 		}
 
-		
+		rate.sleep();
+
+
 	}
     return 0;
 }
