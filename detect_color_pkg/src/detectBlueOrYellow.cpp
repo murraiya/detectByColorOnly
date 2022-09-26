@@ -19,37 +19,25 @@ void ImgSubCallback(const sensor_msgs::Image raw_img){
     
     
     cv_bridge::CvImagePtr cv_ptr = cv_bridge::toCvCopy(raw_img, sensor_msgs::image_encodings::BGR8);
-    // cv::imshow(" image", cv_ptr->image);  //CvImage class에서 멤버변수로 cv::Mat image 있음, ptr 형식 객체의 멤버에 접근할 때 -> 연산자 쓴다.
-    // cv::waitKey(1);
 
     Mat img_hsv; 
-    Mat roi;
+    Mat roi_hsv;
+    Mat roi_h;
 
     Mat yellow_mask, yellow_image;
     Mat channels[3];
 
     cvtColor(cv_ptr->image, img_hsv, COLOR_BGR2HSV);
 
-    roi=img_hsv(Rect(300,300,20,20));
-
-    if(!roi.empty())  cout<<"got my rect"<<endl;
-
-    // imshow("roi", roi);
-    ~roi;
-
-	// Scalar lower_yellow(20, 20, 100);
-	// Scalar upper_yellow(32, 255, 255);
-    imshow("HSV before split", img_hsv);
+    roi_hsv=img_hsv(Rect(320,270,130,210));
+    imshow("roi_hsv", roi_hsv);
 
     split(img_hsv, channels); //split to h,s,v
     
-    imshow("HSV img after split", img_hsv); //original
     // imshow("Hue", channels[0]); //hue
-    // // imshow("Saturate", channels[1]); //saturate
-    // // imshow("Value", channels[2]); //value
-    
-    channels[2] = 255; //value to max
-    // merge(channels, img_hsv); //merge h,s,v
+
+    roi_h=channels[0](Rect(320,270,130,210));
+    imshow("roi_h", roi_h);
     
     waitKey(1);
     // cv::destroyAllWindows();

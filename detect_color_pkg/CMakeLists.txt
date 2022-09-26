@@ -121,12 +121,6 @@ target_link_libraries(detectBlueOrYellow ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}
 
 
 
-
-
-
-
-
-
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/detect_color_pkg.cpp
